@@ -20,8 +20,10 @@ public class GomokuGameState extends Observable implements Observer{
 	
     //Possible game states
 	private final int NOT_STARTED = 0;
+	private int MY_TURN = 0;
+	private int OTHERS_TURN = 0;
+	private int FINISHED = 0; 
 	private int currentState;
-	
 	private GomokuClient client;
 	
 	private String message;
