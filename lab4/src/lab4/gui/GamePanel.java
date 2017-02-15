@@ -17,7 +17,7 @@ import lab4.data.GameGrid;
 public class GamePanel extends JPanel implements Observer{
 
 	private final int UNIT_SIZE = 20;
-	private GameGrid grid;
+	GameGrid grid;
 	
 	/**
 	 * The constructor
@@ -41,7 +41,9 @@ public class GamePanel extends JPanel implements Observer{
 	 * @param y the y coordinates
 	 * @return an integer array containing the [x, y] grid position
 	 */
-	public int[] getGridPosition(int x, int y){}
+	public int[] getGridPosition(int x, int y){
+		return new int[x];//do this later.
+	}
 	
 	public void update(Observable arg0, Object arg1) {
 		this.repaint();
