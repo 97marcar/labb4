@@ -7,7 +7,7 @@ import java.util.Observable;
  */
 
 public class GameGrid extends Observable{
-	private int[][] grid;
+	int[][] grid;
 	public final int EMPTY = 0;
 	public final int ME = 1;
 	public final int OTHER = 2;
