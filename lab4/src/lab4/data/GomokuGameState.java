@@ -107,8 +107,7 @@ public class GomokuGameState extends Observable implements Observer{
 		currentState=OTHER_TURN;
 		message="A new game is started";
 		client.sendNewGameMessage();
-		setChanged();
-		notifyObservers();
+		snotifyAndChange();
 	}
 	
 	/**
@@ -119,8 +118,7 @@ public class GomokuGameState extends Observable implements Observer{
 		gameGrid.clearGrid();
 		currentState=MY_TURN;
 		message="The other player has started a game";
-		setChanged();
-		notifyObservers();
+		notifyAndChange();
 	}
 	
 	/**
@@ -131,8 +129,7 @@ public class GomokuGameState extends Observable implements Observer{
 		gameGrid.clearGrid();
 		currentState=NOT_STARTED;
 		message="the other player disconnected from the game";
-		setChanged();
-		notifyObservers();
+		notifyAndChange();
 	}
 	
 	/**
@@ -143,8 +140,7 @@ public class GomokuGameState extends Observable implements Observer{
 		currentState=NOT_STARTED;
 		message="You have disconnected from the game";
 		client.disconnect();
-		setChanged();
-		notifyObservers();
+		notifyAndChange();
 	}
 	
 	/**
@@ -161,8 +157,7 @@ public class GomokuGameState extends Observable implements Observer{
 			currentState=MY_TURN;
 			message="It's your turn";	
 		}
-		setChanged();
-		notifyObservers();	
+		notifyAndChange();
 	}
 	
 	
@@ -177,6 +172,10 @@ public class GomokuGameState extends Observable implements Observer{
 			currentState = OTHER_TURN;
 			break;
 		}
+		notifyAndChange();
+	}
+	
+	private void notifyAndChange(){
 		setChanged();
 		notifyObservers();
 	}
