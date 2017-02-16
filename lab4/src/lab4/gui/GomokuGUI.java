@@ -1,9 +1,10 @@
 package lab4.gui;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
+import lab4.MouseListener;
 import lab4.client.GomokuClient;
 import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
@@ -16,6 +17,13 @@ public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
 	private GomokuGameState gamestate;
+	private JFrame frame;
+	private	JPanel content;
+	private GamePanel gameGridPanel;
+	private JLabel messageLabel;
+	private JButton connectButton;
+	private JButton newGameButton;
+	private JButton disconnectButton;
 	
 	/**
 	 * The constructor
@@ -29,11 +37,23 @@ public class GomokuGUI implements Observer{
 		client.addObserver(this);
 		gamestate.addObserver(this);
 		
-		JFrame frame = new JFrame("Gomoku");
+		frame = new JFrame("Gomoku");
+		content = new JPanel();
+		gameGridPanel = new GamePanel(g.getGameGrid());
+		messageLabel = new JLabel("123");
+		connectButton = new JButton("Connect");
+		newGameButton = new JButton("New Game");
+		disconnectButton = new JButton("Disconnect");
+		
+		content.add(gameGridPanel);
+		content.add(messageLabel);
+		content.add(connectButton);
+		content.add(newGameButton);
+		content.add(disconnectButton);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel content = new JPanel();
 		frame.setContentPane(content);
-		frame.setSize(400, 400);
+		frame.pack();
 		frame.setVisible(true);
 	}
 	
@@ -57,6 +77,41 @@ public class GomokuGUI implements Observer{
 		if(arg0 == gamestate){
 			messageLabel.setText(gamestate.getMessageString());
 		}
+		
+	}
+
+
+	
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

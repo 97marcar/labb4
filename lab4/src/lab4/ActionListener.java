@@ -1,5 +1,8 @@
 package lab4;
 
-public interface ActionListener {
+import java.awt.event.*;
 
+public interface ActionListener {
+	
+	public void actionPerformed(ActionEvent e);
 }
