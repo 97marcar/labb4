@@ -1,10 +1,8 @@
 package lab4.gui;
-import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
-import lab4.MouseListener;
 import lab4.client.GomokuClient;
 import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
@@ -77,41 +75,6 @@ public class GomokuGUI implements Observer{
 		if(arg0 == gamestate){
 			messageLabel.setText(gamestate.getMessageString());
 		}
-		
-	}
-
-
-	
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	
