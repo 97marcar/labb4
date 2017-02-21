@@ -18,6 +18,9 @@ public class GamePanel extends JPanel implements Observer{
 
 	private final int UNIT_SIZE = 20;
 	GameGrid grid;
+	private final Color MY_COLOR = Color.BLUE;
+	private final Color SQUARE_COLOR = Color.BLACK;
+	private final Color OTHER_COLOR = Color.RED;
 	
 	/**
 	 * The constructor
@@ -51,19 +54,24 @@ public class GamePanel extends JPanel implements Observer{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		int numOfSquares = grid.getSize()*grid.getSize();
-		
 		for (int x = 0; x<grid.getSize(); x++){
+			
 			for(int y = 0; y<grid.getSize(); y++){
-				g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+				
+				if(grid.getLocation(x, y) == grid.EMPTY){
+					g.setColor(SQUARE_COLOR);
+					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+				}else if((grid.getLocation(x, y) == grid.ME)){
+					g.setColor(MY_COLOR);
+					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+				}
+				else if((grid.getLocation(x, y) == grid.OTHER)){
+					g.setColor(OTHER_COLOR);
+					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+				}
+				
 			}
-	}
-		//for(int i = 0, y = 0; i < numOfSquares; i++, y=y+UNIT_SIZE){
-		//	for(int j = 0, x = 0; j < grid.getSize(); j++, x = x+UNIT_SIZE){
-		//			g.drawRect(x, y, UNIT_SIZE, UNIT_SIZE);
-		//	}
-		//}
-		
+		}
 	}
 	
 }
