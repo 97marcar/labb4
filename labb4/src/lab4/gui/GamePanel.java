@@ -53,12 +53,16 @@ public class GamePanel extends JPanel implements Observer{
 		super.paintComponent(g);
 		int numOfSquares = grid.getSize()*grid.getSize();
 		
-		
-		for(int i = 0, y = 0; i < numOfSquares; i++, y=y+UNIT_SIZE){
-			for(int j = 0, x = 0; j < grid.getSize(); j++, x = x+UNIT_SIZE){
-					g.drawRect(x, y, UNIT_SIZE, UNIT_SIZE);
+		for (int x = 0; x<grid.getSize(); x++){
+			for(int y = 0; y<grid.getSize(); y++){
+				g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 			}
-		}
+	}
+		//for(int i = 0, y = 0; i < numOfSquares; i++, y=y+UNIT_SIZE){
+		//	for(int j = 0, x = 0; j < grid.getSize(); j++, x = x+UNIT_SIZE){
+		//			g.drawRect(x, y, UNIT_SIZE, UNIT_SIZE);
+		//	}
+		//}
 		
 	}
 	

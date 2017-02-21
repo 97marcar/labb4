@@ -1,5 +1,7 @@
 package lab4.gui;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -45,6 +47,16 @@ public class GomokuGUI implements Observer{
 		JPanel buttonPanel = new JPanel();
 		JPanel messagePanel = new JPanel();
 		
+		gameGridPanel.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				GamePanel gPanel = new GamePanel (gamestate.getGameGrid());
+				int mouseXpos = e.getX();
+				int mouseYpos = e.getY();
+				int[]Pos=gPanel.getGridPosition(mouseXpos, mouseYpos);
+				gamestate.move(Pos[0], Pos[1]);
+			}
+		});
+		
 		frame.setLayout(new GridLayout(3,1));
 		gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
 		frame.add(gameGridPanel);
@@ -55,6 +67,8 @@ public class GomokuGUI implements Observer{
 		buttonPanel.add(connectButton);
 		buttonPanel.add(newGameButton);
 		buttonPanel.add(disconnectButton);
+		
+		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
