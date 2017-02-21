@@ -81,12 +81,14 @@ public class GomokuGameState extends Observable implements Observer{
 		else if  (currentState==MY_TURN){
 			gameGrid.move(x, y,gameGrid.ME);
 			client.sendMoveMessage(x, y);
+			message="Other players turn";
+			currentState=OTHER_TURN;
+			
 			if(gameGrid.isWinner(gameGrid.ME) == true){
 				currentState=FINISHED;
 				message="You have won";
 				notifyAndChange();
-				message="Other players turn";
-				currentState=OTHER_TURN;
+			}else{
 				notifyAndChange();
 			}
 		}
@@ -147,6 +149,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param y The y coordinate of the move
 	 */
 	public void receivedMove(int x, int y){
+		gameGrid.move(x, y,gameGrid.OTHER);
 		if(gameGrid.isWinner(gameGrid.OTHER) == true){
 			currentState=FINISHED;
 			message="The other player has won the game";
