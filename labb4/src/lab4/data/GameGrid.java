@@ -12,7 +12,7 @@ public class GameGrid extends Observable{
 	public final int ME = 1;
 	public final int OTHER = 2;
 	public final int INROW = 5;
-	
+	private int inrow = 0;
 	/**
 	 * Constructor
 	 * 
@@ -70,7 +70,99 @@ public class GameGrid extends Observable{
 		}
 	}
 		
+	private boolean vertical(int player){
+		for(int y = 0; y < grid.length; y++){
+			for(int x = 0; x < grid[0].length; x++){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}		
+		}
+		return false;
+	}
 	
+	private boolean horisontal(int player){
+		for(int x = 0; x < grid.length; x++){
+			for(int y = 0; y < grid[0].length; y++){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}		
+		}
+		return false;
+	}
+	
+	private boolean diagonal(int player){
+		//Diagonal top left to top right (x-value)
+		for(int i = 0; i < grid.length; i++){
+			for(int x = 0, y = i; x <= i; x++, y--){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}
+		}
+		
+		inrow = 0;
+		
+		//Diagonal bottom right to bottom left (x-value)
+		for(int i = grid.length-1; i >= 0; i--){
+			for(int x = grid.length-1, y = i; x >= i; x--, y++){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}
+		}
+		
+		//Diagonal top right to top left (x-value)
+		for(int i = 0; i < grid.length; i++){
+			for(int x = grid.length-1-i, y = 0; y <= i; x++, y++){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}
+		}
+		
+		//Diagonal bottom left to bottom right (x-value)
+		for(int i = 0; i < grid.length-1; i++){
+			for(int x = 0, y = grid.length-1-i; x <= i; x++, y++){
+				if(grid[x][y] == player){
+					inrow++;
+					if(inrow == INROW){
+						return(true);
+					}
+				}else{
+					inrow = 0;	
+				}
+			}
+		}
+		
+		return(false);
+	}
 	/**
 	 * Check if a player has 5 in row
 	 * 
@@ -78,22 +170,7 @@ public class GameGrid extends Observable{
 	 * @return true if player has 5 in row, false otherwise
 	 */
 	public boolean isWinner(int player){
-		/*int inrow = 0;
-		for(int i = 0; i < grid.length; i++){
-			for(int n = 0; n < grid[i].length; n++){
-				if(grid[i][n] == player){
-					inrow++;
-				}else{
-					inrow = 0;
-				}
-			}
-		}
-		
-		if(inrow == INROW){
-			return true;
-		}
-		return false;*/
-		if(grid[0][0] == player){
+		if(vertical(player) || horisontal(player) || diagonal(player)){
 			return true;
 		}
 		return false;
