@@ -1,4 +1,5 @@
 package lab4.gui;
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -11,12 +12,13 @@ import lab4.data.GomokuGameState;
  * The GUI class
  */
 
-public class GomokuGUI extends JFrame implements Observer{
+public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
 	private GomokuGameState gamestate;
 	private GamePanel gameGridPanel;
 	private JLabel messageLabel;
+	private JFrame frame;
 	private JButton connectButton;
 	private JButton newGameButton;
 	private JButton disconnectButton;
@@ -28,26 +30,35 @@ public class GomokuGUI extends JFrame implements Observer{
 	 * @param c   The client that is responsible for the communication
 	 */
 	public GomokuGUI(GomokuGameState g, GomokuClient c){
+		frame = new JFrame("Gomoku");
 		this.client = c;
 		this.gamestate = g;
 		client.addObserver(this);
 		gamestate.addObserver(this);
 
 		gameGridPanel = new GamePanel(gamestate.getGameGrid());
-		messageLabel = new JLabel("123");
+		messageLabel = new JLabel("Welcome to Gomoku");
 		connectButton = new JButton("Connect");
 		newGameButton = new JButton("New Game");
 		disconnectButton = new JButton("Disconnect");
 		
-		gameGridPanel.add(messageLabel);
-		gameGridPanel.add(connectButton);
-		gameGridPanel.add(newGameButton);
-		gameGridPanel.add(disconnectButton);
+		JPanel buttonPanel = new JPanel();
+		JPanel messagePanel = new JPanel();
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(gameGridPanel);
-		this.pack();
-		this.setVisible(true);
+		frame.setLayout(new GridLayout(3,1));
+		gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
+		frame.add(gameGridPanel);
+		frame.add(buttonPanel);
+		frame.add(messagePanel);
+		
+		messagePanel.add(messageLabel);
+		buttonPanel.add(connectButton);
+		buttonPanel.add(newGameButton);
+		buttonPanel.add(disconnectButton);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	
