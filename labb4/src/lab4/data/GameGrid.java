@@ -38,7 +38,7 @@ public class GameGrid extends Observable{
 	 * @return the grid size
 	 */
 	public int getSize(){
-		return(grid.length*grid.length);
+		return(grid.length);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class GameGrid extends Observable{
 	 * @return true if player has 5 in row, false otherwise
 	 */
 	public boolean isWinner(int player){
-		int inrow = 0;
+		/*int inrow = 0;
 		for(int i = 0; i < grid.length; i++){
 			for(int n = 0; n < grid[i].length; n++){
 				if(grid[i][n] == player){
@@ -90,6 +90,10 @@ public class GameGrid extends Observable{
 		}
 		
 		if(inrow == INROW){
+			return true;
+		}
+		return false;*/
+		if(grid[0][0] == player){
 			return true;
 		}
 		return false;
