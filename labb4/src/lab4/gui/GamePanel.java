@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements Observer{
 	 * @return an integer array containing the [x, y] grid position
 	 */
 	public int[] getGridPosition(int x, int y){
-		return new int[x];//do this later.
+		return new int[] {x/UNIT_SIZE, y/UNIT_SIZE};
 	}
 	
 	public void update(Observable arg0, Object arg1) {
@@ -51,6 +51,14 @@ public class GamePanel extends JPanel implements Observer{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		int numOfSquares = grid.getSize()*grid.getSize();
+		
+		
+		for(int i = 0, y = 0; i < numOfSquares; i++, y=y+UNIT_SIZE){
+			for(int j = 0, x = 0; j < grid.getSize(); j++, x = x+UNIT_SIZE){
+					g.drawRect(x, y, UNIT_SIZE, UNIT_SIZE);
+			}
+		}
 		
 	}
 	
