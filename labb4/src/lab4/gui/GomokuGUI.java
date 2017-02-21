@@ -1,5 +1,7 @@
 package lab4.gui;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
@@ -54,6 +56,24 @@ public class GomokuGUI implements Observer{
 				int mouseYpos = e.getY();
 				int[]Pos=gPanel.getGridPosition(mouseXpos, mouseYpos);
 				gamestate.move(Pos[0], Pos[1]);
+			}
+		});
+		
+		disconnectButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				gamestate.disconnect();
+			}
+		});
+		
+		newGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				gamestate.newGame();
+			}
+		});
+		
+		connectButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConnectionWindow connectionWindow = new ConnectionWindow(client);
 			}
 		});
 		
