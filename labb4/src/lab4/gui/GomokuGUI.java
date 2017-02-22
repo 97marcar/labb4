@@ -47,8 +47,24 @@ public class GomokuGUI implements Observer{
 		newGameButton = new JButton("New Game");
 		disconnectButton = new JButton("Disconnect");
 		
-		JPanel buttonPanel = new JPanel();
-		JPanel messagePanel = new JPanel();
+		Box buttonBox = new Box(BoxLayout.X_AXIS);
+		buttonBox.add(connectButton);
+		buttonBox.add(newGameButton);
+		buttonBox.add(disconnectButton);
+		
+		Box messageBox = new Box(BoxLayout.X_AXIS);
+		messageBox.add(messageLabel);
+		
+		Box gridBox = new Box(BoxLayout.X_AXIS);
+		gridBox.add(gameGridPanel);
+		
+		Box box = new Box(BoxLayout.Y_AXIS);
+		box.add(gridBox);
+		box.add(buttonBox);
+		box.add(messageBox);
+		
+		//JPanel buttonPanel = new JPanel();
+		//JPanel messagePanel = new JPanel();
 		
 		gameGridPanel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
@@ -78,18 +94,18 @@ public class GomokuGUI implements Observer{
 			}
 		});
 		
-		frame.setLayout(new GridLayout(3,1));
-		gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
-		frame.add(gameGridPanel);
-		frame.add(buttonPanel);
-		frame.add(messagePanel);
+		//frame.setLayout(new GridBagLayout()));
+		//gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
+		//frame.add(gameGridPanel);
+		//frame.add(buttonPanel);
+		//frame.add(messagePanel);
 		
-		messagePanel.add(messageLabel);
-		buttonPanel.add(connectButton);
-		buttonPanel.add(newGameButton);
-		buttonPanel.add(disconnectButton);
+		//messagePanel.add(messageLabel);
+		//buttonPanel.add(connectButton);
+		//buttonPanel.add(newGameButton);
+		//buttonPanel.add(disconnectButton);
 		
-		
+		frame.add(box);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
