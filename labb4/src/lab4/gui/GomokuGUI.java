@@ -14,6 +14,7 @@ import lab4.data.GomokuGameState;
 
 /*
  * The GUI class
+ * @author Marcus Carlsson and Henrik Möller
  */
 
 public class GomokuGUI implements Observer{

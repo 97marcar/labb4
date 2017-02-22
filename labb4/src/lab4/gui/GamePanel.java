@@ -12,12 +12,15 @@ import lab4.data.GameGrid;
 
 /**
  * A panel providing a graphical view of the game board
+ * @author Marcus Carlsson and Henrik Möller
  */
 
 public class GamePanel extends JPanel implements Observer{
 
 	private final int UNIT_SIZE = 20;
 	GameGrid grid;
+	
+	//Colors to use when painting the grid.
 	private final Color MY_COLOR = Color.BLUE;
 	private final Color SQUARE_COLOR = Color.BLACK;
 	private final Color OTHER_COLOR = Color.RED;
@@ -58,13 +61,17 @@ public class GamePanel extends JPanel implements Observer{
 			
 			for(int y = 0; y<grid.getSize(); y++){
 				
+				//If it's empty draw an empty square
 				if(grid.getLocation(x, y) == grid.EMPTY){
 					g.setColor(SQUARE_COLOR);
 					g.drawRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
+				
+				//if you've made a move here draw a MY_COLOR filled square
 				}else if((grid.getLocation(x, y) == grid.ME)){
 					g.setColor(MY_COLOR);
 					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);
 				}
+				//if your opponent made a move here draw a OTHER_COLOR filled square
 				else if((grid.getLocation(x, y) == grid.OTHER)){
 					g.setColor(OTHER_COLOR);
 					g.fillRect(UNIT_SIZE*x, UNIT_SIZE*y, UNIT_SIZE, UNIT_SIZE);

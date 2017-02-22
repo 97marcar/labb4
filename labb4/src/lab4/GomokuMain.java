@@ -4,6 +4,11 @@ import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
 import lab4.gui.GomokuGUI;
 
+/**
+ * 
+ * @author Marcus Carlsson and Henrik Möller
+ * Creates client(s).
+ */
 public class GomokuMain {
 
 	public static void main(String[] args) {

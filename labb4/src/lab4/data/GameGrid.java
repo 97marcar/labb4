@@ -4,6 +4,7 @@ import java.util.Observable;
 
 /**
  * Represents the 2-d game grid
+ * @author Marcus Carlsson and Henrik Möller
  */
 
 public class GameGrid extends Observable{
@@ -20,6 +21,7 @@ public class GameGrid extends Observable{
 	 */
 	public GameGrid(int size){
 		grid = new int[size][size];
+		clearGrid();
 	} 
 	/**
 	 * Reads a location of the grid
@@ -69,7 +71,7 @@ public class GameGrid extends Observable{
 			}
 		}
 	}
-		
+	
 	private boolean vertical(int player){
 		for(int y = 0; y < grid.length; y++){
 			for(int x = 0; x < grid[0].length; x++){

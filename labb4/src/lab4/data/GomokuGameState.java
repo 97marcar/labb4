@@ -1,6 +1,4 @@
-/*
- * Created on 2007 feb 8
- */
+
 package lab4.data;
 
 import java.util.Observable;
@@ -9,6 +7,7 @@ import lab4.client.GomokuClient;
 
 /**
  * Represents the state of a game
+ *	@author Marcus Carlsson and Henrik Möller
  */
 
 public class GomokuGameState extends Observable implements Observer{
@@ -161,6 +160,9 @@ public class GomokuGameState extends Observable implements Observer{
 	}
 	
 	
+	/**
+	 * Update
+	 */
 	public void update(Observable o, Object arg) {
 		switch(client.getConnectionStatus()){
 		case GomokuClient.CLIENT:
@@ -175,6 +177,7 @@ public class GomokuGameState extends Observable implements Observer{
 		notifyAndChange();
 	}
 	
+	//Make sure notifiers know a change happened
 	private void notifyAndChange(){
 		setChanged();
 		notifyObservers();
