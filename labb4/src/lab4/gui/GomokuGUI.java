@@ -62,9 +62,7 @@ public class GomokuGUI implements Observer{
 		box.add(gridBox);
 		box.add(buttonBox);
 		box.add(messageBox);
-		
-		//JPanel buttonPanel = new JPanel();
-		//JPanel messagePanel = new JPanel();
+
 		
 		gameGridPanel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
@@ -94,31 +92,10 @@ public class GomokuGUI implements Observer{
 			}
 		});
 
-		
-		//frame.setLayout(new GridBagLayout()));
-		//gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
-		//frame.add(gameGridPanel);
-		//frame.add(buttonPanel);
-		//frame.add(messagePanel);
 
 		newGameButton.setEnabled(false);
 		disconnectButton.setEnabled(false);
-		//frame.setLayout(new GridLayout(3,1));
-		//gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
-		//frame.add(gameGridPanel);
-		//frame.add(buttonPanel);
-		//frame.add(messagePanel);
-		
-		//messagePanel.add(messageLabel);
-		//buttonPanel.add(connectButton);
-		//buttonPanel.add(newGameButton);
-		//buttonPanel.add(disconnectButton);
 
-		
-		//messagePanel.add(messageLabel);
-		//buttonPanel.add(connectButton);
-		//buttonPanel.add(newGameButton);
-		//buttonPanel.add(disconnectButton);
 		
 		frame.add(box);
 		

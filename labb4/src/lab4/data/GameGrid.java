@@ -22,6 +22,7 @@ public class GameGrid extends Observable{
 	public GameGrid(int size){
 		grid = new int[size][size];
 		clearGrid();
+		
 	} 
 	/**
 	 * Reads a location of the grid
@@ -70,6 +71,8 @@ public class GameGrid extends Observable{
 				grid[i][n] = EMPTY;
 			}
 		}
+		setChanged();
+		notifyObservers();
 	}
 	
 	private boolean vertical(int player){
