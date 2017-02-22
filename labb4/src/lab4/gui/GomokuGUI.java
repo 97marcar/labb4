@@ -93,12 +93,27 @@ public class GomokuGUI implements Observer{
 				ConnectionWindow connectionWindow = new ConnectionWindow(client);
 			}
 		});
+<<<<<<< HEAD
 		
 		//frame.setLayout(new GridBagLayout()));
 		//gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
 		//frame.add(gameGridPanel);
 		//frame.add(buttonPanel);
 		//frame.add(messagePanel);
+=======
+		newGameButton.setEnabled(false);
+		disconnectButton.setEnabled(false);
+		frame.setLayout(new GridLayout(3,1));
+		gameGridPanel.setLayout(new BoxLayout(gameGridPanel, BoxLayout.Y_AXIS));
+		frame.add(gameGridPanel);
+		frame.add(buttonPanel);
+		frame.add(messagePanel);
+		
+		messagePanel.add(messageLabel);
+		buttonPanel.add(connectButton);
+		buttonPanel.add(newGameButton);
+		buttonPanel.add(disconnectButton);
+>>>>>>> origin/master
 		
 		//messagePanel.add(messageLabel);
 		//buttonPanel.add(connectButton);
