@@ -67,15 +67,20 @@ public class GomokuGameState extends Observable implements Observer{
 	public void move(int x, int y){
 		if (currentState==NOT_STARTED){
 			message="Game not started";
+			notifyAndChange();
 		}
 		else if(currentState==FINISHED){
 			message="Game is already finished";
+			notifyAndChange();
 		}
 		else if(currentState==OTHER_TURN){
 			message="It's the other players turn";
+			notifyAndChange();
 		}
+		
 		else if (gameGrid.grid[x][y]!=0){
 			message="Square is NOT empty, choose another square";
+			notifyAndChange();
 		}
 		else if  (currentState==MY_TURN){
 			gameGrid.move(x, y,gameGrid.ME);
